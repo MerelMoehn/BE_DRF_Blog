@@ -1,6 +1,6 @@
 
 from .models import Post
-from rest_framework import generics
+from rest_framework import generics, filters
 from .serializers import PostSerializer
 
 class PostList(generics.ListCreateAPIView):
@@ -10,6 +10,12 @@ class PostList(generics.ListCreateAPIView):
     """
     serializer_class = PostSerializer
     queryset = Post.objects.all()
+    filter_backends = [
+        filters.SearchFilter,
+    ]
+    search_fields = [
+        'title',
+    ]
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
