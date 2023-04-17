@@ -68,6 +68,8 @@ ALLOWED_HOSTS = [
    'localhost',
 ]
 
+CSRF_TRUSTED_ORIGINS = ["https://8000-merelmoehn-bedrfblog-61yoyxfdzvr.ws-eu94.gitpod.io"]
+
 # Application definition
 
 INSTALLED_APPS = [
